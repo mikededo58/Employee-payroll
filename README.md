@@ -26,3 +26,4 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/whi
 https://www.w3schools.com/js/js_popup.asp
 https://gist.github.com/jrrio/55f93cdfc70209f1a7ba0a8d3bb762a2
 https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/
+Michell Brito, the DI tutor who helped me get the array populating
