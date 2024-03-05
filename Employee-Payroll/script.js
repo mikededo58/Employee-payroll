@@ -1,50 +1,51 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector("#add-employees-btn");
 
-// Collect employee data
-let employeesArray = [
-  {
-    firstname: "",
-    lastname: "",
-    salary: 0,
-  },
-];
+// creating function to add key values of (fistname, lastname and slarey into EmployeesArray)
+// defined array
+let employeesArray = [];
 const collectEmployees = function () {
-  // let input = prompt("Would you like to add a new employee? click?");
-  while (confirm("Add new Employee?")) {
-    let firstNameCell = prompt("Enter the Employess first name");
-    let newEmployee = { firstname: firstNameCell };
-    newEmployee.lastName = prompt("Enter the Employees last name");
-    newEmployee.salary = parseInt(prompt("Enter the Employees Salary"));
-    employeesArray.push(newEmployee);
+  // used while loop with confirm to being up prompt
+  while (confirm("Add new employee")) {
+    let employees = {}; // created onject to push to array
+    employees.firstName = prompt("Enter Employees First Name"); //created key with prompt
+    employees.lastName = prompt("Enter Employees Last Name");
+    employees.salary = parseInt(prompt("Enter Employees Salary")); // added parseint to convert string to number for calculations
+    employeesArray.push(employees);
+    //   if (employees.salary.isNan(i)) {
+    //     employeesArray.push(salary = 0);
+    //   }
   }
 };
-
 console.log(employeesArray);
 collectEmployees();
 
-const displayAverageSalary = function (employeesArray) {
-  var count = 0;
-  var sumSalary = 0;
-  for (var key in employeesArray) {
+// creating funtion for average salart
+const displayAverageSalary = function () {
+  let count = 0; // definingg count variable
+  let sumSalary = 0; // defining salary varables
+  for (let key in employeesArray) {
+    // using a for loop to find all salarys
     if (employeesArray.hasOwnProperty(key)) {
+      // using hasownproperty to mkae sure a salary exists
       if (employeesArray[key].hasOwnProperty("salary")) {
-        sumSalary += employeesArray[key].salary;
-        count += 1;
+        // pulling out all obj that have a salary key
+        sumSalary += employeesArray[key].salary; // adding all salaries
+        count += 1; // adding to account for obj 0
       }
     }
   }
-  console.log(sumSalary / count);
-  console.log(count);
+  console.log(sumSalary / count); // dividing total salary by number of objs with a salary
+  console.log(count); //displaying number of objs effecting the salary
 };
-// console.log(employeesArray.length);
 displayAverageSalary();
 
 // Select a random employee
-const getRandomEmployee = function (employeesArray.firstName.random) {
-// TODO: Select and display a random employee
-return this [Math.floor(Math.random() * this.length)];
-}
+const getRandomEmployee = function () {
+  console.log(
+    employeesArray[Math.floor(Math.random() * employeesArray.length)] // random employee slected and consoled
+  );
+};
 getRandomEmployee();
 
 /*
@@ -63,21 +64,21 @@ const displayEmployees = function (employeesArray) {
 
   // Loop through the employee data and create a row for each employee
   for (let i = 0; i < employeesArray.length; i++) {
-    const currentEmployee = employeesArray[i];
+    const employee = employeesArray[i];
 
     const newTableRow = document.createElement("tr");
 
     const firstNameCell = document.createElement("td");
-    firstNameCell.textContent = currentEmployee.firstName;
+    firstNameCell.textContent = employee.firstName;
     newTableRow.append(firstNameCell);
 
     const lastNameCell = document.createElement("td");
-    lastNameCell.textContent = currentEmployee.lastName;
+    lastNameCell.textContent = employee.lastName;
     newTableRow.append(lastNameCell);
 
     const salaryCell = document.createElement("td");
     // Format the salary as currency
-    salaryCell.textContent = currentEmployee.salary.toLocaleString("en-US", {
+    salaryCell.textContent = employee.salary.toLocaleString("en-US", {
       style: "currency",
       currency: "USD",
     });
