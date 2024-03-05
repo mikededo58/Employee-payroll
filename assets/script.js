@@ -6,19 +6,20 @@ const addEmployeesBtn = document.querySelector("#add-employees-btn");
 let employeesArray = [];
 const collectEmployees = function () {
   // used while loop with confirm to being up prompt
+
   while (confirm("Add new employee")) {
     let employees = {}; // created onject to push to array
     employees.firstName = prompt("Enter Employees First Name"); //created key with prompt
     employees.lastName = prompt("Enter Employees Last Name");
-    employees.salary = parseInt(prompt("Enter Employees Salary")); // added parseint to convert string to number for calculations
+    const salary = parseInt(prompt("Enter Employees Salary"));
+    employees.salary = isNaN(salary) ? 0 : salary;
     employeesArray.push(employees);
-    //   if (employees.salary.isNan(i)) {
-    //     employeesArray.push(salary = 0);
-    //   }
   }
+
+  return employeesArray;
 };
 console.log(employeesArray);
-collectEmployees();
+//collectEmployees();
 
 // creating funtion for average salart
 const displayAverageSalary = function () {
@@ -35,19 +36,19 @@ const displayAverageSalary = function () {
       }
     }
   }
-  console.log(sumSalary / count); // dividing total salary by number of objs with a salary
-  console.log(count); //displaying number of objs effecting the salary
+  console.log(
+    `The Average salary of the ${count} employees is ${sumSalary / count} `
+  ); // dividing total salary by number of objs with a salary
 };
-displayAverageSalary();
 
 // Select a random employee
 const getRandomEmployee = function () {
   const randomEmployee =
     employeesArray[Math.floor(Math.random() * employeesArray.length)]; // random employee slected and consoled
-  console.log(`${randomEmployee.firtName} + ${randomEmployee.lastName}`);
+  console.log(
+    `Congratualtions to ${randomEmployee.firstName} ${randomEmployee.lastName} our random drawing winner!`
+  );
 };
-getRandomEmployee();
-
 /*
   ====================
   STARTER CODE
@@ -56,6 +57,7 @@ getRandomEmployee();
 
 // Display employee data in an HTML table
 const displayEmployees = function (employeesArray) {
+  // -A;
   // Get the employee table
   const employeeTable = document.querySelector("#employee-table");
 
